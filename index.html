@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston Bruins Apparel Shop</title>
+    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Boston_Bruins_100th_anniversary_logo.svg/2048px-Boston_Bruins_100th_anniversary_logo.svg.png">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <script src="https://kit.fontawesome.com/55cfe6f560.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="w3-content" style="max-width:1200px">
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+        <div class="w3-container w3-display-container w3-padding-16">
+            <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"
+                id="filter-close-button"></i>
+            <h3 class="w3-wide"><b><a href="index.html"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Boston_Bruins_100th_anniversary_logo.svg/2048px-Boston_Bruins_100th_anniversary_logo.svg.png"
+                            alt="Home" width="40px" height="40px"></a></b></h3>
+        </div>
+        <input type="text" id="menuSearch" onkeyup="menuSearchFunction()" placeholder="Search..."
+            title="Type in a category">
+        <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+            <ul id="sidebarMenu">
+                <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Shirts</a></li>
+                <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Hats</a></li>
+                <li><a onclick="jerseyAccFunc()" href="javascript:void(0)"
+                        class="w3-button w3-block w3-white w3-left-align" id="jerseyBtn">
+                        Jerseys <i class="fa fa-caret-down"></i>
+                    </a></li>
+                <div id="jerseyAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+                    <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Home</a></li>
+                    <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Away</a></li>
+                    <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Other</a></li>
+                    <li><a onclick="genderAccFunc()" href="javascript:void(0)"
+                            class="w3-button w3-block w3-white w3-left-align" id="genderBtn">
+                            Gender <i class="fa fa-caret-down"></i>
+                        </a></li>
+                    <div id="genderAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+                        <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Men's</a></li>
+                        <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Women's</a></li>
+                    </div>
+                </div>
+                <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Jackets</a></li>
+                <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Activewear</a></li>
+                <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Accessories</a></li>
+                <li><a href="#" class="w3-bar-item w3-button" id="filter-button">Other</a></li>
+            </ul>
+        </div>
+        <a href="#footer" class="w3-bar-item w3-button w3-padding" id="filter-button">Contact</a>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" id="filter-button"
+            onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
+        <a href="#footer" class="w3-bar-item w3-button w3-padding" id="filter-button">Subscribe</a>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+        <div class="w3-bar-item w3-padding-24 w3-wide"><a href="index.html" id="site-home"><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Boston_Bruins_100th_anniversary_logo.svg/2048px-Boston_Bruins_100th_anniversary_logo.svg.png"
+                    alt="Home" width="40px" height="40px"> Boston Bruins</a></div>
+        <a href="javascript:void(0)" id="menu-button" class="w3-bar-item w3-button w3-padding-24 w3-right"
+            onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:250px">
+
+        <!-- Push down content on small screens -->
+        <div class="w3-hide-large" style="margin-top:83px"></div>
+
+        <!-- Top header -->
+        <header class="w3-container w3-xlarge">
+            <p class="w3-left">Jerseys</p>
+            <p class="w3-right" style="cursor: default;">
+                <i class="fa fa-shopping-cart w3-margin-right" id="cart"></i>
+                <i class="fa fa-search" id="site-search" onclick="openSiteSearch()"></i>
+                <input type="search" id="site-search-bar" onkeyup="siteSearchFunction()" placeholder="Search for...">
+            </p>
+        </header>
+
+        <script>
+            function openSiteSearch() {
+                var icon = document.getElementById("site-search");
+                var searchBar = document.getElementById("site-search-bar");
+
+                icon.style.display = "none";
+
+                searchBar.style.display = "inline";
+                searchBar.style.animationPlayState = "running";
+            }
+        </script>
+
+        <!-- Image header -->
+        <div class="w3-display-container w3-container">
+            <img src="img/NHL Site Banner.png" class="header-image" alt="Jerseys" style="width:100%">
+            <div class="w3-display-topleft w3-text-white" id="header-text" style="padding:24px 48px">
+                <h1 class="w3-jumbo w3-hide-small">New arrivals</h1>
+                <h1 class="w3-hide-large w3-hide-medium">New arrivals</h1>
+                <h1 class="w3-hide-small" id="collection-name">COLLECTION 2024</h1>
+                <p><a href="#jerseys" class="w3-button w3-white w3-padding-large w3-large" id="shop-now-button">SHOP NOW
+                        <span class="material-symbols-rounded"
+                            style="vertical-align: text-top; font-size: 20px; font-weight: 600;">arrow_forward</span></a>
+                </p>
+            </div>
+        </div>
+
+        <div class="w3-container w3-text-grey" id="jerseys">
+            <p>8 items</p>
+        </div>
+
+        <!-- Product grid -->
+        <div class="w3-row">
+            <div class="w3-col l3 s6">
+                <div class="w3-container">
+                    <div class="w3-display-container product-card">
+                        <img src="https://fanatics.frgimages.com/boston-bruins/mens-adidas-black-boston-bruins-100th-anniversary-primegreen-authentic-custom-jersey_ss5_p-200042311+u-tt0jubevucgxkccc2oka+v-bken4ztmpd7yaigfd59e.jpg?_hv=2&w=340"
+                            class="product-image" style="width:100%">
+                        <span class="w3-tag w3-display-topleft" id="popular-tag"><span id="popular-tag-text">Most
+                                Popular in Jerseys</span></span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <button class="w3-button w3-black" id="buy-now-button">Buy now <i
+                                    class="fa fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                    <p>Men's Boston Bruins adidas Black 100th Anniversary Primegreen Authentic Custom Jersey
+                    <br><b>$249.99</b></p>
+                </div>
+                <div class="w3-container">
+                    <div class="w3-display-container product-card" id="product-image-3">
+                        <img src="https://fanatics.frgimages.com/boston-bruins/mens-adidas-brad-marchand-black-boston-bruins-primegreen-authentic-player-jersey_ss5_p-5274667+u-mb7vyc4cjzqvsfins8qq+v-nzcgclaysba6n34bfd44.jpg?_hv=2&w=340"
+                            class="product-image" style="width:100%">
+                        <span class="w3-tag w3-display-topleft" id="popular-tag"><span id="popular-tag-text">Most
+                                Popular in Jerseys</span></span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <button class="w3-button w3-black" id="buy-now-button">Buy now <i
+                                    class="fa fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                    <p>Men's Boston Bruins Brad Marchand adidas Black Primegreen Authentic Player Jersey<br>
+                    <div class="jersey-colors">
+                        <ul id="jersey-colors">
+                            <li data-color='url("https://fanatics.frgimages.com/boston-bruins/mens-adidas-brad-marchand-black-boston-bruins-primegreen-authentic-player-jersey_ss5_p-5274667+u-mb7vyc4cjzqvsfins8qq+v-nzcgclaysba6n34bfd44.jpg?_hv=2&w=340")' style="background-color: black;" class="jersey-color-li"></li>
+                            <li data-color='url("https://fanatics.frgimages.com/boston-bruins/mens-adidas-brad-marchand-white-boston-bruins-primegreen-authentic-player-jersey_ss5_p-5274677+u-3swcryfkzxwndr9ergdh+v-v8qqih1tzstpxay8nwdm.jpg?_hv=2&w=340")' style="background-color: white;" class="jersey-color-li"></li>
+                        </ul>
+                    </div><b>$229.99</b></p>
+                </div>
+            </div>
+
+            <div class="w3-col l3 s6">
+                <div class="w3-container">
+                    <div class="w3-display-container product-card" id="product-image-2">
+                        <img src="https://fanatics.frgimages.com/boston-bruins/mens-adidas-david-pastrnak-black-boston-bruins-primegreen-authentic-player-jersey_ss5_p-5274669+u-ipbt4domucuklgqviln6+v-yadjhufkrjufslirwz8h.jpg?_hv=2&w=340"
+                            class="product-image" style="width:100%">
+                        <span class="w3-tag w3-display-topleft" id="popular-tag"><span id="popular-tag-text">Most
+                                Popular in Jerseys</span></span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <button class="w3-button w3-black" id="buy-now-button">Buy now <i
+                                    class="fa fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                    <p>Men's Boston Bruins David Pastrnak adidas Black Primegreen Authentic Player Jersey<br>
+                    <div class="jersey-colors">
+                        <ul id="jersey-colors">
+                            <li data-color='url("https://fanatics.frgimages.com/boston-bruins/mens-adidas-david-pastrnak-black-boston-bruins-primegreen-authentic-player-jersey_ss5_p-5274669+u-ipbt4domucuklgqviln6+v-yadjhufkrjufslirwz8h.jpg?_hv=2&w=340")' style="background-color: black;" class="jersey-color-li"></li>
+                            <li data-color='url("https://fanatics.frgimages.com/boston-bruins/mens-adidas-david-pastrnak-white-boston-bruins-primegreen-authentic-player-jersey_ss5_p-5274679+u-s0jue7dqwofscxk7fndf+v-kky28tux9azwicmz1gdm.jpg?_hv=2&w=340")' style="background-color: white;" class="jersey-color-li"></li>
+                        </ul>
+                    </div><b>$229.99</b></p>
+                </div>
+                <div class="w3-container">
+                    <div class="w3-display-container product-card" id="product-image-4">
+                        <img src="https://fanatics.frgimages.com/boston-bruins/mens-fanatics-branded-david-pastrnak-black-boston-bruins-home-breakaway-player-jersey_pi3041000_ff_3041832_full.jpg?_hv=2&w=340"
+                            class="product-image" style="width:100%">
+                        <span class="w3-tag w3-display-topleft" id="popular-tag"><span id="popular-tag-text">Most
+                                Popular in Jerseys</span></span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <button class="w3-button w3-black" id="buy-now-button">Buy now <i
+                                    class="fa fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                    <p>Men's Boston Bruins David Pastrnak Fanatics Branded Black Home Breakaway Player Jersey
+                    <br><br><b>$174.99</b></p>
+                </div>
+            </div>
+
+            <div class="w3-col l3 s6">
+                <div class="w3-container">
+                    <div class="w3-display-container product-card">
+                        <img src="https://fanatics.frgimages.com/boston-bruins/mens-fanatics-branded-white-boston-bruins-100th-anniversary-premier-breakaway-jersey_ss5_p-5292195+u-nz784kwzft09t9qmrtdu+v-gx2eujaixcdwewzwwhrm.jpg?_hv=2&w=340"
+                            class="product-image" style="width:100%">
+                        <div class="w3-display-middle w3-display-hover">
+                            <button class="w3-button w3-black" id="buy-now-button">Buy now <i
+                                    class="fa fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                    <p>Men's Boston Bruins Fanatics Branded White 100th Anniversary Premier Breakaway Jersey
+                    <br><b>$134.99</b></p>
+                </div>
+                <div class="w3-container">
+                    <div class="w3-display-container product-card">
+                        <img src="https://fanatics.frgimages.com/boston-bruins/mens-fanatics-branded-white-boston-bruins-breakaway-away-jersey_pi2874000_ff_2874104_full.jpg?_hv=2&w=340"
+                            class="product-image" style="width:100%">
+                        <span class="w3-tag w3-display-topleft" id="popular-tag"><span id="popular-tag-text">Most
+                                Popular in Jerseys</span></span>
+                        <div class="w3-display-middle w3-display-hover">
+                            <button class="w3-button w3-black" id="buy-now-button">Buy now <i
+                                    class="fa fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                    <p>Men's Boston Bruins Fanatics Branded White Breakaway Away Jersey
+                    <br><b>$134.99</b></p>
+                </div>
+            </div>
+
+            <div class="w3-col l3 s6">
+                <div class="w3-container">
+                    <div class="w3-display-container product-card">
+                        <img src="https://fanatics.frgimages.com/boston-bruins/mens-adidas-david-pastrnak-cream-boston-bruins-primegreen-authentic-pro-player-jersey_ss5_p-5274674+u-mkyk1qj8c1qsj0ptmjrd+v-kp2sl7uiqsa0tbgahlza.jpg?_hv=2&w=340"
+                            class="product-image" style="width:100%">
+                        <div class="w3-display-middle w3-display-hover">
+                            <button class="w3-button w3-black" id="buy-now-button">Buy now <i
+                                    class="fa fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                    <p>Men's Boston Bruins David Pastrnak adidas Black Primegreen Authentic Player Jersey
+                    <br><b>$229.99</b></p>
+                </div>
+                <div class="w3-container">
+                    <div class="w3-display-container product-card">
+                        <img src="https://fanatics.frgimages.com/boston-bruins/mens-fanatics-branded-jeremy-swayman-black-boston-bruins-home-breakaway-replica-jersey_pi4325000_ff_4325957-c02f720515ec905ec4f1_full.jpg?_hv=2&w=340"
+                            class="product-image" style="width:100%">
+                        <div class="w3-display-middle w3-display-hover">
+                            <button class="w3-button w3-black" id="buy-now-button">Buy now <i
+                                    class="fa fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                    <p>Men's Boston Bruins Jeremy Swayman Fanatics Branded Black Home Breakaway Replica Jersey
+                    <br><b>$174.99</b></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscribe section -->
+        <div class="w3-container w3-black w3-padding-32">
+            <h1>Subscribe</h1>
+            <p>To get special offers and VIP treatment:</p>
+            <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
+            <button type="button" class="w3-button w3-white w3-margin-bottom" id="subscribe-button">Subscribe</button>
+        </div>
+
+        <!-- Footer -->
+        <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+            <div class="w3-row-padding">
+                <div class="w3-col s4">
+                    <h4>Contact</h4>
+                    <p>Questions? Go ahead, and leave us a message below.</p>
+                    <form action="/action_page.php" target="_blank">
+                        <p><input class="w3-input w3-border" id="contact-field" type="text" placeholder="Name*"
+                                name="Name" required></p>
+                        <p><input class="w3-input w3-border" id="contact-field" type="text" placeholder="Email*"
+                                name="Email" required></p>
+                        <p><input class="w3-input w3-border" id="contact-field" type="text" placeholder="Subject*"
+                                name="Subject" required>
+                        </p>
+                        <p><input class="w3-input w3-border" id="contact-field" type="text" placeholder="Message*"
+                                name="Message" required>
+                        </p>
+                        <button type="submit" class="w3-button w3-block w3-white" id="send-button">Send</button>
+                        <p style="font-size: smaller; font-smooth: always;"><em><span
+                                    style="color: firebrick;">*</span>&nbsp;&nbsp;Indicates a required field</em></p>
+                    </form>
+                </div>
+
+                <div class="w3-col s4 w3-justify" id="about-links">
+                    <h4>About</h4>
+                    <p><a href="#">About us</a>
+                        &nbsp;&nbsp;<a href="#">We're hiring</a>
+                    </p>
+                    <p><a href="#">Support</a>
+                        &nbsp;&nbsp;<a href="#">Find store</a>
+                    </p>
+                    <p><a href="#">Shipment</a>
+                        &nbsp;&nbsp;<a href="#">Payment</a>
+                    </p>
+                    <p><a href="#">Gift card</a>
+                        &nbsp;&nbsp;<a href="#">Return</a>
+                    </p>
+                    <p><a href="#">Help</a></p>
+                </div>
+
+                <div class="w3-col s4 w3-justify">
+                    <h4>Store</h4>
+                    <p>
+                        <i class="fa fa-fw fa-map-marker"></i> Walpole High School
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>275 Common Street</small>
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>Walpole, MA 02081</small>
+                    </p>
+                    <p><i class="fa fa-fw fa-phone"></i> (508) 660-7257</p>
+                    <p><i class="fa fa-fw fa-fax"></i> (508) 850-7958</p>
+                    <p><i class="fa fa-fw fa-envelope"></i> mclaughlink26@wpsma.org</p>
+                    <h4>We accept</h4>
+                    <p>
+                    <p><i class="fa-brands fa-fw fa-cc-amex"></i> Amex
+                        <i class="fa-brands fa-cc-mastercard" id="pay-col-2"></i> Mastercard
+                    </p>
+                    </p>
+                    <p>
+                    <p><i class="fa-brands fa-cc-visa"></i> Visa
+                        <i class="fa-brands fa-cc-discover" id="pay-col-2"></i> Discover
+                    </p>
+                    </p>
+                    <p>
+                    <p><i class="fa-brands fa-paypal"></i> PayPal
+                        <i class="fa-brands fa-amazon-pay" id="pay-col-2"></i> Amazon Pay
+                    </p>
+                    </p>
+                    <p>
+                    <p><i class="fa-brands fa-apple-pay"></i> Apple Pay
+                        <i class="fa-brands fa-google-pay" id="pay-col-2"></i> Google Pay
+                    </p>
+                    </p>
+                    <p><i class="fa fa-fw fa-credit-card"></i> Credit/Debit Card</p>
+                    <br>
+                    <i class="fa-brands fa-facebook w3-hover-opacity w3-large"></i>
+                    <i class="fa-brands fa-instagram w3-hover-opacity w3-large"></i>
+                    <i class="fa-brands fa-snapchat w3-hover-opacity w3-large"></i>
+                    <i class="fa-brands fa-figma w3-hover-opacity w3-large"></i>
+                    <i class="fa-brands fa-x-twitter w3-hover-opacity w3-large"></i>
+                    <i class="fa-brands fa-github w3-hover-opacity w3-large"></i>
+                </div>
+            </div>
+        </footer>
+
+        <div class="w3-black w3-center w3-padding-24"><small>Copyright &copy; WHS Web Design & Walpole High
+                School</small>
+            <br>
+            <br><small>&copy; Fanatics, Inc. 2024. All Rights Reserved. NHL and the NHL Shield are registered trademarks
+                of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. &copy;
+                NHL 2024. All Rights Reserved.</small>
+            <br>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
+                class="w3-hover-opacity">w3.css</a>
+        </div>
+
+        <!-- End page content -->
+    </div>
+
+    <!-- Newsletter Modal -->
+    <div id="newsletter" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+            <div class="w3-container w3-white w3-center">
+                <i onclick="document.getElementById('newsletter').style.display='none'"
+                    class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
+                <h2 class="w3-wide">NEWSLETTER</h2>
+                <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
+                <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+                <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom"
+                    onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Accordion 
+        function jerseyAccFunc() {
+            var x = document.getElementById("jerseyAcc");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        // Click on the "Jerseys" link on page load to open the accordion for demo purposes
+        document.getElementById("jerseyBtn").click();
+
+        // Accordion 
+        function genderAccFunc() {
+            var x = document.getElementById("genderAcc");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        // Open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        function menuSearchFunction() {
+            // Declare variables
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("menuSearch");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("sideMenu");
+            li = ul.getElementsByTagName("li");
+
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+
+        let listElements = document.querySelectorAll('jersey-color-li');
+        listElements.forEach(element => {
+            element.addEventListener('click', function () {
+                let clr = this.getAttribute('data-color');
+                document.documentElement.style.setProperty('--jersey', clr);
+            })
+        });
+    </script>
+
+</body>
+
+</html>
